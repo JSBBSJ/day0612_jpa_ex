@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{views/commons/layout :: layout( ~{::main} , ~{})}">
+<head>
+</head>
+<main>
+	<h1>고객센터</h1>
+	<div>
+		<th:block th:replace="~{views/commons/cs-menu}"/>
+		<section>
+			<h1>FAQ</h1>
+			<div></div>
+		</section>
+	</div>
+</main>
+</html>
