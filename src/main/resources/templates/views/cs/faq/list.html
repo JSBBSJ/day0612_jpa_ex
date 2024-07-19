@@ -1,16 +1,35 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{views/commons/layout :: layout( ~{::main} , ~{})}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{ views/commons/layout :: layout( ~{::main} , ~{::head}) }">
 <head>
+	<link rel="stylesheet" href="/css/faq.css">
 </head>
 <main>
 	<h1>고객센터</h1>
-	<div>
-		<th:block th:replace="~{views/commons/cs-menu}"/>
+	<div class="wrap  view-size">
+		<th:block th:replace="~{views/commons/cs-menu}" />
 		<section>
 			<h1>FAQ</h1>
-			<div></div>
-		</section>
-	</div>
-</main>
-</html>
+			<div class="wrap">
+							
+							<ul>
+								<li class="flex tit">
+									<span>번호</span>
+									<span>질문</span>
+									
+								</li>
+								<li class="flex list" th:each="dto:${list}" th:classappend="${dto.fixed}? 'fixed-color'" >
+									<span th:text="${dto.fixed} ? '❗' : ${dto.no} " class="no">번호</span>
+									<span th:text="${dto.division}">구분</span>
+									<span >
+										<a th:href="|/cscenter/notices/${dto.no}|" th:text="${dto.title}">제목</a>
+									</span>
+									<span th:text="${dto.updatedAt.toLocalDate}">등록일</span>
+								</li>
+							</ul>
+						</div>
+					</section>
+				</div>
+				
+			</main>
+
+			</html>

@@ -70,7 +70,7 @@ public class SSHTunnelingConfig {
 		
 		System.out.println("localPort:"+localPort);
 		//DataSource 정보
-		HikariConfig config=new HikariConfig();
+		HikariConfig config=hikariConfig();
 		config.setJdbcUrl(dataSourceProperties.getUrl().replace("[LOCAL_PORT]", String.valueOf(localPort)));
 		config.setDriverClassName(dataSourceProperties.getDriverClassName());
 		config.setUsername(dataSourceProperties.getUsername());
@@ -78,6 +78,12 @@ public class SSHTunnelingConfig {
 		return new HikariDataSource(config);
 	}
 	
+	@Bean
+	@ConfigurationProperties(prefix = "spring.datasource.hikari")
+	HikariConfig hikariConfig() {
+		return new HikariConfig();
+	}
+
 	@Bean
 	SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
 		

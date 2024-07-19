@@ -41,9 +41,3 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-.tabmenu input:checked ~ label{
-  background:#ccc;
-}
-.tabmenu input:checked ~ .tabCon{
-  display:block;
-}
